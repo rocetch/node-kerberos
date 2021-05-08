@@ -45,7 +45,7 @@ jobs:
           # Push is a shorthand for --output=type=registry
           #push: # optional, default is false
           # List of tags
-          #tags: # optional
+          tags: rocetch/node-kerberos:14.16.1-alpine-20210508
           # Sets the target stage to build
           #target: # optional
           # GitHub Token used to authenticate against a repository for Git context
