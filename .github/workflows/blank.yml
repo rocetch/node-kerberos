@@ -23,6 +23,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y%m%d')"
+
       - name: Build and push Docker images
         uses: docker/build-push-action@v2.4.0
         with:
@@ -43,9 +47,9 @@ jobs:
           # List of target platforms for build
           #platforms: # optional
           # Push is a shorthand for --output=type=registry
-          #push: # optional, default is false
+          push: true # optional, default is false
           # List of tags
-          tags: rocetch/node-kerberos:14.16.1-alpine-20210508
+          tags: rocetch/node-kerberos:14.16.1-alpine-${{ steps.date.outputs.date }}
           # Sets the target stage to build
           #target: # optional
           # GitHub Token used to authenticate against a repository for Git context
